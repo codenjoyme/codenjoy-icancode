@@ -34,7 +34,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
-public class CoreLogicTest extends AbstractGameTest {
+public class GameTest extends AbstractGameTest {
 
     @Test
     public void shouldFieldAtStart() {
