@@ -34,7 +34,7 @@ import com.codenjoy.dojo.services.printer.layeredview.LayeredBoardReader;
 import java.util.List;
 import java.util.Optional;
 
-public interface Field extends GameField<Player> {
+public interface Field extends GameField<Player, Hero> {
 
     boolean isBarrier(Point pt);
 
