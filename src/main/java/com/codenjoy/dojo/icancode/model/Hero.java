@@ -83,7 +83,7 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
 
     @Override
     public GameSettings settings() {
-        return (GameSettings) field.settings();
+        return field.settings();
     }
 
     private void resetState() {

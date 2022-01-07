@@ -25,6 +25,7 @@ package com.codenjoy.dojo.icancode.model;
 
 import com.codenjoy.dojo.icancode.model.items.*;
 import com.codenjoy.dojo.icancode.model.items.perks.Perk;
+import com.codenjoy.dojo.icancode.services.GameSettings;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
@@ -69,6 +70,8 @@ public interface Field extends GameField<Player, Hero> {
     void fire(Direction direction, Point from, FieldItem owner);
 
     int size();
+
+    GameSettings settings();
 
     List<Zombie> zombies();
 
