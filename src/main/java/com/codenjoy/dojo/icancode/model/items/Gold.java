@@ -29,7 +29,7 @@ import com.codenjoy.dojo.icancode.model.Item;
 import com.codenjoy.dojo.icancode.model.Player;
 import com.codenjoy.dojo.icancode.model.items.perks.Perk;
 
-import static com.codenjoy.dojo.services.StateUtils.filterOne;
+import static com.codenjoy.dojo.services.printer.state.StateUtils.filterOne;
 
 public class Gold extends RenewableItem {
 

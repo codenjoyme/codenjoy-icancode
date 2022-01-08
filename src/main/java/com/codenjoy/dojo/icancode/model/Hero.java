@@ -32,8 +32,8 @@ import com.codenjoy.dojo.icancode.services.CodeSaver;
 import com.codenjoy.dojo.icancode.services.GameSettings;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.State;
-import com.codenjoy.dojo.services.StateUtils;
+import com.codenjoy.dojo.services.printer.state.State;
+import com.codenjoy.dojo.services.printer.state.StateUtils;
 import com.codenjoy.dojo.services.multiplayer.PlayerHero;
 
 import java.util.ArrayList;

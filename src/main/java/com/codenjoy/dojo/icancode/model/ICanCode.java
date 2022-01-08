@@ -29,6 +29,7 @@ import com.codenjoy.dojo.icancode.services.GameSettings;
 import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.printer.BoardReader;
 import com.codenjoy.dojo.services.printer.layeredview.LayeredBoardReader;
+import com.codenjoy.dojo.services.printer.state.State;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;

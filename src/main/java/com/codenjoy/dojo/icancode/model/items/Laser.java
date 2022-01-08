@@ -27,7 +27,7 @@ import com.codenjoy.dojo.games.icancode.Element;
 import com.codenjoy.dojo.icancode.model.*;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.State;
+import com.codenjoy.dojo.services.printer.state.State;
 import com.codenjoy.dojo.services.Tickable;
 
 public class Laser extends FieldItem implements Tickable {

@@ -24,7 +24,7 @@ package com.codenjoy.dojo.icancode.model;
 
 
 import com.codenjoy.dojo.games.icancode.Element;
-import com.codenjoy.dojo.services.State;
+import com.codenjoy.dojo.services.printer.state.State;
 
 import java.util.List;
 
