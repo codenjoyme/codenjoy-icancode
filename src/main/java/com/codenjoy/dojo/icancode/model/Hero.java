@@ -130,12 +130,9 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
 
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
-        Element state = state();
-        if (StateUtils.itsMe(player, this, alsoAtPoint, player.getHero().item)) {
-            return state;
-        } else {
-            return state.other();
-        }
+        return StateUtils.containsMyHero(player, this, alsoAtPoint, player.getHero().item)
+                ? state()
+                : state().other();
     }
 
     public Element state() {
