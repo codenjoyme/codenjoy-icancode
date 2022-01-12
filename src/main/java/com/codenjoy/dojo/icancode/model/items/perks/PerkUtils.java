@@ -22,6 +22,7 @@ package com.codenjoy.dojo.icancode.model.items.perks;
  * #L%
  */
 
+import com.codenjoy.dojo.client.ElementsMap;
 import com.codenjoy.dojo.games.icancode.Element;
 import com.codenjoy.dojo.icancode.model.ElementMapper;
 import com.codenjoy.dojo.icancode.services.GameSettings;
@@ -38,6 +39,8 @@ import static java.util.stream.Collectors.toList;
 
 public class PerkUtils {
 
+    private static final ElementsMap<Element> elements = new ElementsMap<>(Element.values());
+    
     public static Optional<Perk> random(Dice dice, boolean contest, GameSettings settings) {
         List<Element> all = new LinkedList<>(Element.perks());
         defaultFor(contest, settings).forEach(perk -> all.remove(perk.getState()));
@@ -71,7 +74,7 @@ public class PerkUtils {
             return Arrays.asList();
         }
         return perks.chars()
-                .mapToObj(ch -> Element.valueOf((char)ch))
+                .mapToObj(ch -> elements.get((char)ch))
                 .map(element -> (Perk) ElementMapper.get(element))
                 .collect(toList());
     }

@@ -23,6 +23,7 @@ package com.codenjoy.dojo.icancode.model;
  */
 
 
+import com.codenjoy.dojo.client.ElementsMap;
 import com.codenjoy.dojo.games.icancode.Element;
 import com.codenjoy.dojo.icancode.model.items.perks.PerkUtils;
 import com.codenjoy.dojo.icancode.services.GameSettings;
@@ -33,7 +34,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Level extends AbstractLevel {
-
+    
+    private static final ElementsMap<Element> elements = new ElementsMap<>(Element.values());
+    
     private Cell[] cells;
     private GameSettings settings;
 
@@ -55,14 +58,14 @@ public class Level extends AbstractLevel {
             for (int x = 0; x < size; ++x) {
 
                 CellImpl cell = new CellImpl(x, y);
-                Element element = Element.valueOf(map.charAt(indexChar));
+                Element element = elements.get(map.charAt(indexChar));
                 BaseItem item = create(element, settings);
 
                 if (element.getLayer() != Element.Layers.LAYER1
                     || element == Element.GOLD
                     || PerkUtils.isPerk(element))
                 {
-                    Element atBottom = Element.valueOf(Element.FLOOR.ch());
+                    Element atBottom = Element.FLOOR;
                     cell.add(create(atBottom, settings));
                 }
 
