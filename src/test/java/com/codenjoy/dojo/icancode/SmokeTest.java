@@ -51,7 +51,7 @@ public class SmokeTest {
 
     @Test
     public void test() {
-        // about 8s
+        // about 6.8 sec
         int ticks = 1000;
         Solver<?> ai = getDummySolver(dice);
 
