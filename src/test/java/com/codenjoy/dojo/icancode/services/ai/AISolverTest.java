@@ -23,10 +23,9 @@ package com.codenjoy.dojo.icancode.services.ai;
  */
 
 
-import com.codenjoy.dojo.icancode.services.ai.AISolver;
-import com.codenjoy.dojo.services.Dice;
-import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.games.icancode.Board;
+import com.codenjoy.dojo.services.Direction;
+import com.codenjoy.dojo.services.dice.MockDice;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -34,7 +33,6 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
 /**
  * Created by Mikhail_Udalyi on 20.09.2016.
@@ -42,7 +40,7 @@ import static org.mockito.Mockito.mock;
 public class AISolverTest {
     private Board board;
     private AISolver solver;
-    private Dice dice = mock(Dice.class);
+    private MockDice dice = new MockDice();
 
     public static Board board(String... boardString) {
         return (Board) new Board().forString(boardString);

@@ -24,7 +24,6 @@ package com.codenjoy.dojo.icancode.model;
 
 
 import org.junit.Test;
-import org.mockito.stubbing.OngoingStubbing;
 
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.Direction.LEFT;
@@ -353,7 +352,8 @@ public class ZombieTest extends AbstractGameTest {
         assertEquals(false, hero.isWin());
 
         // when
-        selectStartSpot().thenReturn(1); // and female zombie
+        dice(0,     // select start spot
+                1); // and female zombie
         game.newGame(player);
         game.tick();
         game.tick();
@@ -378,10 +378,6 @@ public class ZombieTest extends AbstractGameTest {
                 "---♀--" +
                 "------" +
                 "------");
-    }
-
-    OngoingStubbing<Integer> selectStartSpot() {
-        return dice(0);
     }
 
     @Test

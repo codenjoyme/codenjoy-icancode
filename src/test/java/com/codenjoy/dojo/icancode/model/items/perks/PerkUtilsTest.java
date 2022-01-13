@@ -26,7 +26,7 @@ import com.codenjoy.dojo.games.icancode.Element;
 import com.codenjoy.dojo.icancode.TestGameSettings;
 import com.codenjoy.dojo.icancode.model.ICanCode;
 import com.codenjoy.dojo.icancode.services.GameSettings;
-import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.dice.MockDice;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,13 +36,10 @@ import java.util.Optional;
 
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.DEFAULT_PERKS;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class PerkUtilsTest {
 
-    private Dice dice = mock(Dice.class);
+    private MockDice dice = new MockDice();
     private GameSettings settings;
 
     @Before
@@ -171,7 +168,7 @@ public class PerkUtilsTest {
 
         List<Perk> result = new LinkedList<>();
         for (int index = 0; index < length; index++) {
-            when(dice.next(anyInt())).thenReturn(index);
+            dice.then(index);
 
             try {
                 Optional<Perk> perk = PerkUtils.random(dice, contest, settings);

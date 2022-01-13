@@ -28,10 +28,10 @@ import com.codenjoy.dojo.icancode.model.items.perks.DeathRayPerk;
 import com.codenjoy.dojo.icancode.services.Event;
 import com.codenjoy.dojo.icancode.services.GameRunner;
 import com.codenjoy.dojo.icancode.services.GameSettings;
-import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.PointImpl;
+import com.codenjoy.dojo.services.dice.MockDice;
 import com.codenjoy.dojo.services.multiplayer.GamePlayer;
 import com.codenjoy.dojo.services.multiplayer.LevelProgress;
 import com.codenjoy.dojo.services.multiplayer.MultiplayerType;
@@ -44,7 +44,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.ComparisonFailure;
 import org.junit.Test;
-import org.mockito.stubbing.OngoingStubbing;
 
 import java.util.*;
 
@@ -54,13 +53,11 @@ import static com.codenjoy.dojo.icancode.services.LevelsTest.VIEW_SIZE_TESTING;
 import static com.codenjoy.dojo.services.multiplayer.GamePlayer.DEFAULT_TEAM_ID;
 import static com.codenjoy.dojo.utils.TestUtils.injectN;
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class MultiplayerTest {
 
-    private Dice dice;
+    private MockDice dice;
     private EventListener listener1;
     private EventListener listener2;
     private Single single1;
@@ -84,7 +81,7 @@ public class MultiplayerTest {
                 .string(DEFAULT_PERKS, "ajm,ajm");
 
         events = new EventsListenersAssert(() -> Arrays.asList(listener1, listener2), Event.class);
-        dice = mock(Dice.class);
+        dice = new MockDice();
     }
 
     @After
@@ -96,11 +93,8 @@ public class MultiplayerTest {
         assertEquals(expected, events.getEvents());
     }
 
-    private void dice(int... ints) {
-        OngoingStubbing<Integer> when = when(dice.next(anyInt()));
-        for (int i : ints) {
-            when = when.thenReturn(i);
-        }
+    private void dice(Integer... next) {
+        dice.then(next);
     }
 
     void givenFl(String... boards) {

@@ -29,10 +29,10 @@ import com.codenjoy.dojo.icancode.model.items.ZombieBrain;
 import com.codenjoy.dojo.icancode.model.items.perks.Perk;
 import com.codenjoy.dojo.icancode.services.Event;
 import com.codenjoy.dojo.icancode.services.GameSettings;
-import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.Point;
+import com.codenjoy.dojo.services.dice.MockDice;
 import com.codenjoy.dojo.services.printer.Printer;
 import com.codenjoy.dojo.services.printer.layeredview.LayeredViewPrinter;
 import com.codenjoy.dojo.services.printer.layeredview.PrinterData;
@@ -52,7 +52,6 @@ import static com.codenjoy.dojo.services.Direction.STOP;
 import static com.codenjoy.dojo.services.PointImpl.pt;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 public abstract class AbstractGameTest {
@@ -65,7 +64,7 @@ public abstract class AbstractGameTest {
     private Printer<PrinterData> printer;
 
     protected Hero hero;
-    protected Dice dice;
+    protected MockDice dice;
     private EventListener listener;
     protected Player player;
     protected GameSettings settings;
@@ -82,7 +81,7 @@ public abstract class AbstractGameTest {
 
         listener = mock(EventListener.class);
         events = new EventsListenersAssert(() -> Arrays.asList(listener), Event.class);
-        dice = mock(Dice.class);
+        dice = new MockDice();
     }
 
     @After
@@ -96,12 +95,8 @@ public abstract class AbstractGameTest {
         }
     }
 
-    protected OngoingStubbing<Integer> dice(int... ints) {
-        OngoingStubbing<Integer> when = when(dice.next(anyInt()));
-        for (int i : ints) {
-            when = when.thenReturn(i);
-        }
-        return when;
+    protected void dice(Integer... next) {
+        dice.then(next);
     }
 
     protected void givenFl(String board) {
@@ -152,12 +147,12 @@ public abstract class AbstractGameTest {
         assertEquals(expected, events.getEvents());
     }
     
-    protected OngoingStubbing<Integer> generateFemale() {
-        return dice(1);
+    protected void generateFemale() {
+        dice(1);
     }
 
-    protected OngoingStubbing<Integer> generateMale() {
-        return dice(0);
+    protected void generateMale() {
+        dice(0);
     }
 
     protected OngoingStubbing<Direction> givenZombie() {
