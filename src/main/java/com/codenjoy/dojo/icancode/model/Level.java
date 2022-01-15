@@ -33,6 +33,8 @@ import com.codenjoy.dojo.services.field.AbstractLevel;
 import java.util.LinkedList;
 import java.util.List;
 
+import static com.codenjoy.dojo.client.AbstractLayeredBoard.Layers.LAYER1;
+
 public class Level extends AbstractLevel {
     
     private static final ElementsMap<Element> elements = new ElementsMap<>(Element.values());
@@ -61,7 +63,7 @@ public class Level extends AbstractLevel {
                 Element element = elements.get(map.charAt(indexChar));
                 BaseItem item = create(element, settings);
 
-                if (element.getLayer() != Element.Layers.LAYER1
+                if (element.getLayer() != LAYER1
                     || element == Element.GOLD
                     || PerkUtils.isPerk(element))
                 {

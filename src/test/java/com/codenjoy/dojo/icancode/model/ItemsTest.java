@@ -27,7 +27,7 @@ import com.codenjoy.dojo.icancode.model.items.*;
 import com.codenjoy.dojo.icancode.model.items.perks.*;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.games.icancode.Element.Layers.*;
+import static com.codenjoy.dojo.client.AbstractLayeredBoard.Layers.*;
 import static org.junit.Assert.assertEquals;
 
 public class ItemsTest {

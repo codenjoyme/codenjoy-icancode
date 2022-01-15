@@ -47,7 +47,7 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static com.codenjoy.dojo.games.icancode.Element.Layers.*;
+import static com.codenjoy.dojo.client.AbstractLayeredBoard.Layers.*;
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.icancode.services.LevelsTest.VIEW_SIZE_TESTING;
 import static com.codenjoy.dojo.services.multiplayer.GamePlayer.DEFAULT_TEAM_ID;

@@ -28,7 +28,7 @@ import com.codenjoy.dojo.icancode.model.Hero;
 import com.codenjoy.dojo.icancode.model.Player;
 import com.codenjoy.dojo.services.Tickable;
 
-import static com.codenjoy.dojo.games.icancode.Element.Layers.LAYER3;
+import static com.codenjoy.dojo.client.AbstractLayeredBoard.Layers.LAYER3;
 
 public class HeroItem extends FieldItem implements Tickable {
 

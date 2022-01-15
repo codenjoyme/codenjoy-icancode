@@ -46,7 +46,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.codenjoy.dojo.games.icancode.Element.Layers.*;
+import static com.codenjoy.dojo.client.AbstractLayeredBoard.Layers.*;
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.Direction.STOP;
 import static com.codenjoy.dojo.services.PointImpl.pt;
