@@ -44,8 +44,8 @@ public class Level extends AbstractLevel {
         super(map);
         cells = new Cell[map.length()];
         this.settings = settings;
-        if (size*size != map.length()) {
-            throw new IllegalArgumentException("map must be square! " + size + "^2 != " + map.length());
+        if (size() * size() != map.length()) {
+            throw new IllegalArgumentException("map must be square! " + size() + "^2 != " + map.length());
         }
 
         fillMap(map);
@@ -54,8 +54,8 @@ public class Level extends AbstractLevel {
     private void fillMap(String map) {
         int indexChar = 0;
 
-        for (int y = size - 1; y > -1; --y) {
-            for (int x = 0; x < size; ++x) {
+        for (int y = size() - 1; y > -1; --y) {
+            for (int x = 0; x < size(); ++x) {
 
                 CellImpl cell = new CellImpl(x, y);
                 Element element = elements.get(map.charAt(indexChar));
@@ -70,7 +70,7 @@ public class Level extends AbstractLevel {
                 }
 
                 cell.add(item);
-                cells[xy.length(x, y)] = cell;
+                cells[this.map.xy().length(x, y)] = cell;
                 ++indexChar;
             }
         }
@@ -85,7 +85,7 @@ public class Level extends AbstractLevel {
     }
 
     public Cell cell(int x, int y) {
-        return cells[xy.length(x, y)];
+        return cells[map.xy().length(x, y)];
     }
 
     public Cell cell(Point pt) {
@@ -97,7 +97,7 @@ public class Level extends AbstractLevel {
     }
 
     public boolean isBarrier(Point pt) {
-        return pt.isOutOf(size)
+        return pt.isOutOf(size())
                 || !cell(pt).passable();
     }
 
