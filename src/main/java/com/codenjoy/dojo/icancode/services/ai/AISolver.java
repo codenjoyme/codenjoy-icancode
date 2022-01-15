@@ -56,7 +56,7 @@ public class AISolver extends AbstractSolver {
             return doNothing();
         }
         Direction nextStep = shortestWay.get(0);
-        Point me = board.getMe();
+        Point me = board.getHero();
         Point whereToGo = nextStep.change(me);
         if (board.isAt(whereToGo.getX(), whereToGo.getY(), HOLE, BOX, LASER_RIGHT, LASER_LEFT, LASER_UP, LASER_DOWN)) {
             return Command.jump(nextStep);
@@ -85,7 +85,7 @@ public class AISolver extends AbstractSolver {
     List<Direction> getShortestWay(Board board, List<Point> to) {
         DeikstraFindWay.Possible map = possible(board);
         DeikstraFindWay findWay = new DeikstraFindWay();
-        List<Direction> shortestWay = findWay.getShortestWay(board.size(), board.getMe(), to, map);
+        List<Direction> shortestWay = findWay.getShortestWay(board.size(), board.getHero(), to, map);
         return shortestWay;
     }
 }
