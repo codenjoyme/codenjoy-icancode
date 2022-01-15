@@ -26,7 +26,7 @@ package com.codenjoy.dojo.icancode.services;
 import com.codenjoy.dojo.games.icancode.Element;
 import com.codenjoy.dojo.icancode.model.Level;
 import com.codenjoy.dojo.icancode.services.levels.*;
-import com.codenjoy.dojo.services.LengthToXY;
+import com.codenjoy.dojo.services.BoardMap;
 import com.codenjoy.dojo.utils.LevelUtils;
 import com.codenjoy.dojo.utils.TestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -129,8 +129,8 @@ public final class Levels {
     }
 
     public static String decorate(String level) {
-        LengthToXY.Map map = new LengthToXY.Map(level);
-        LengthToXY.Map out = new LengthToXY.Map(map.size());
+        BoardMap map = new BoardMap(level);
+        BoardMap out = new BoardMap(map.size());
         for (int x = 0; x < map.size(); ++x) {
             for (int y = 0; y < map.size(); ++y) {
                 char at = map.getAt(x, y);
@@ -285,7 +285,7 @@ public final class Levels {
         return out.map();
     }
 
-    private static boolean isaBoolean(LengthToXY.Map map, int x, int y, String s, String s2, String s3) {
+    private static boolean isaBoolean(BoardMap map, int x, int y, String s, String s2, String s3) {
         return chk(s +
                 s2 +
                 s2, x, y, map) ||
@@ -300,9 +300,9 @@ public final class Levels {
                         "   ", x, y, map);
     }
 
-    private static boolean chk(String mask, int x, int y, LengthToXY.Map map) {
-        LengthToXY.Map mm = new LengthToXY.Map(mask);
-        LengthToXY.Map out = new LengthToXY.Map(mm.size());
+    private static boolean chk(String mask, int x, int y, BoardMap map) {
+        BoardMap mm = new BoardMap(mask);
+        BoardMap out = new BoardMap(mm.size());
         for (int xx = -1; xx <= 1; xx++) {
             for (int yy = -1; yy <= 1; yy++) {
                 char ch = ' ';
