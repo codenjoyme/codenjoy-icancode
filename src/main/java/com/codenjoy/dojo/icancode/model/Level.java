@@ -70,7 +70,7 @@ public class Level extends AbstractLevel {
                 }
 
                 cell.add(item);
-                cells[xy.getLength(x, y)] = cell;
+                cells[xy.length(x, y)] = cell;
                 ++indexChar;
             }
         }
@@ -85,7 +85,7 @@ public class Level extends AbstractLevel {
     }
 
     public Cell cell(int x, int y) {
-        return cells[xy.getLength(x, y)];
+        return cells[xy.length(x, y)];
     }
 
     public Cell cell(Point pt) {
