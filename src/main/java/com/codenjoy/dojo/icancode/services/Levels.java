@@ -282,7 +282,7 @@ public final class Levels {
             }
         }
 
-        return out.getMap();
+        return out.map();
     }
 
     private static boolean isaBoolean(LengthToXY.Map map, int x, int y, String s, String s2, String s3) {
@@ -312,7 +312,7 @@ public final class Levels {
                 out.setAt(xx + 1, yy + 1, ch);
             }
         }
-        String actual = TestUtils.injectN(out.getMap());
+        String actual = TestUtils.injectN(out.map());
         String expected = TestUtils.injectN(mask);
 //        System.out.print(actual);
 //        System.out.println("-----------");
