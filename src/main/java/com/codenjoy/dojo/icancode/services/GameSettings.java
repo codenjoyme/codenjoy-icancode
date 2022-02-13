@@ -28,50 +28,48 @@ import com.codenjoy.dojo.icancode.services.levels.Level;
 import com.codenjoy.dojo.services.event.Calculator;
 import com.codenjoy.dojo.services.multiplayer.Mode;
 import com.codenjoy.dojo.services.multiplayer.MultiplayerSettings;
+import com.codenjoy.dojo.services.settings.PropertiesKey;
 import com.codenjoy.dojo.services.settings.SettingsImpl;
 import com.codenjoy.dojo.services.settings.SettingsReader;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static com.codenjoy.dojo.icancode.services.GameRunner.GAME_NAME;
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.*;
 
 public class GameSettings extends SettingsImpl
         implements SettingsReader<GameSettings>,
                    MultiplayerSettings<GameSettings> {
 
-    public enum Keys implements Key {
+    public enum Keys implements PropertiesKey {
 
-        IS_TRAINING_MODE("[Game] Is training mode"),
-        VIEW_SIZE("[Game] Map view size"),
-        LEVELS_COUNT("[Game] Levels count"),
-        CHEATS("[Game] Cheats enabled"),
-
-        GUN_RECHARGE("[Gun] Heroes gun recharge"),
-        GUN_SHOT_QUEUE("[Gun] Heroes gun need to relax after a series of shots"),
-        GUN_REST_TIME("[Gun] Heroes gun rest time(ticks)"),
-
-        TICKS_PER_NEW_ZOMBIE("[Zombie] Ticks per new zombie"),
-        COUNT_ZOMBIES_ON_MAP("[Zombie] Count zombies"),
-        WALK_EACH_TICKS("[Zombie] Zombie walks tick timeout"),
-
-        DEFAULT_PERKS("[Perk] Default hero perks on training and contest"),
-        PERK_DROP_RATIO("[Perk] Drop ratio"),
-        PERK_AVAILABILITY("[Perk] Availability"),
-        PERK_ACTIVITY("[Perk] Activity"),
-        DEATH_RAY_PERK_RANGE("[Perk] Death-Ray perk range"),
-
-        WIN_SCORE("[Score] Win score"),
-        GOLD_SCORE("[Score] Gold score"),
-        KILL_ZOMBIE_SCORE("[Score] Kill zombie score"),
-        ENABLE_KILL_SCORE("[Score] Enable score for kill"),
-        KILL_HERO_SCORE("[Score] Kill hero score"),
-        LOSE_PENALTY("[Score] Lose penalty");
+        IS_TRAINING_MODE,
+        VIEW_SIZE,
+        LEVELS_COUNT,
+        CHEATS,
+        GUN_RECHARGE,
+        GUN_SHOT_QUEUE,
+        GUN_REST_TIME,
+        TICKS_PER_NEW_ZOMBIE,
+        COUNT_ZOMBIES_ON_MAP,
+        WALK_EACH_TICKS,
+        DEFAULT_PERKS,
+        PERK_DROP_RATIO,
+        PERK_AVAILABILITY,
+        PERK_ACTIVITY,
+        DEATH_RAY_PERK_RANGE,
+        WIN_SCORE,
+        GOLD_SCORE,
+        KILL_ZOMBIE_SCORE,
+        ENABLE_KILL_SCORE,
+        KILL_HERO_SCORE,
+        LOSE_PENALTY;
 
         private String key;
 
-        Keys(String key) {
-            this.key = key;
+        Keys() {
+            this.key = key(GAME_NAME);
         }
 
         @Override
