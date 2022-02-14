@@ -69,7 +69,7 @@ public class AISolver extends AbstractSolver {
         return go(nextStep);
     }
 
-    private DeikstraFindWay.Possible possible(final Board board) {
+    private DeikstraFindWay.Possible possible(Board board) {
         return new DeikstraFindWay.Possible() {
             @Override // TODO test me
             public boolean possible(Point point) {
