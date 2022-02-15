@@ -24,6 +24,7 @@ package com.codenjoy.dojo.icancode.model;
 
 
 import com.codenjoy.dojo.games.icancode.Element;
+import com.codenjoy.dojo.games.icancode.ElementUtils;
 import com.codenjoy.dojo.icancode.model.gun.Gun;
 import com.codenjoy.dojo.icancode.model.gun.GunWithOverHeat;
 import com.codenjoy.dojo.icancode.model.items.*;
@@ -32,9 +33,9 @@ import com.codenjoy.dojo.icancode.services.CodeSaver;
 import com.codenjoy.dojo.icancode.services.GameSettings;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
+import com.codenjoy.dojo.services.multiplayer.PlayerHero;
 import com.codenjoy.dojo.services.printer.state.State;
 import com.codenjoy.dojo.services.printer.state.StateUtils;
-import com.codenjoy.dojo.services.multiplayer.PlayerHero;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -132,7 +133,7 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
     public Element state(Player player, Object... alsoAtPoint) {
         return StateUtils.containsMyHero(player, this, alsoAtPoint, player.getHero().item)
                 ? state()
-                : state().other();
+                : ElementUtils.other(state());
     }
 
     public Element state() {

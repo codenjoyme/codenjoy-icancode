@@ -23,6 +23,7 @@ package com.codenjoy.dojo.icancode.model.items.perks;
  */
 
 import com.codenjoy.dojo.games.icancode.Element;
+import com.codenjoy.dojo.games.icancode.ElementUtils;
 import com.codenjoy.dojo.icancode.TestGameSettings;
 import com.codenjoy.dojo.icancode.model.ICanCode;
 import com.codenjoy.dojo.icancode.services.GameSettings;
@@ -49,14 +50,14 @@ public class PerkUtilsTest {
 
     @Test
     public void test_isPerk() {
-        assertEquals(true, PerkUtils.isPerk(Element.UNLIMITED_FIRE_PERK));
-        assertEquals(true, PerkUtils.isPerk(Element.MOVE_BOXES_PERK));
-        assertEquals(true, PerkUtils.isPerk(Element.JUMP_PERK));
-        assertEquals(true, PerkUtils.isPerk(Element.FIRE_PERK));
-        assertEquals(true, PerkUtils.isPerk(Element.DEATH_RAY_PERK));
-        assertEquals(true, PerkUtils.isPerk(Element.UNSTOPPABLE_LASER_PERK));
+        assertEquals(true, ElementUtils.isPerk(Element.UNLIMITED_FIRE_PERK));
+        assertEquals(true, ElementUtils.isPerk(Element.MOVE_BOXES_PERK));
+        assertEquals(true, ElementUtils.isPerk(Element.JUMP_PERK));
+        assertEquals(true, ElementUtils.isPerk(Element.FIRE_PERK));
+        assertEquals(true, ElementUtils.isPerk(Element.DEATH_RAY_PERK));
+        assertEquals(true, ElementUtils.isPerk(Element.UNSTOPPABLE_LASER_PERK));
 
-        assertEquals(false, PerkUtils.isPerk(Element.ROBO));
+        assertEquals(false, ElementUtils.isPerk(Element.ROBO));
     }
 
     @Test
@@ -164,7 +165,7 @@ public class PerkUtilsTest {
     private void assertRandom(String perks, boolean contest, String expected) {
         settings.string(DEFAULT_PERKS, perks);
 
-        int length = Element.perks().size();
+        int length = ElementUtils.perks.length;
 
         List<Perk> result = new LinkedList<>();
         for (int index = 0; index < length; index++) {

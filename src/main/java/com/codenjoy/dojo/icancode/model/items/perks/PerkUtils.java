@@ -34,6 +34,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.codenjoy.dojo.games.icancode.ElementUtils.perks;
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.DEFAULT_PERKS;
 import static java.util.stream.Collectors.toList;
 
@@ -42,7 +43,7 @@ public class PerkUtils {
     private static final ElementsMap<Element> elements = new ElementsMap<>(Element.values());
     
     public static Optional<Perk> random(Dice dice, boolean contest, GameSettings settings) {
-        List<Element> all = new LinkedList<>(Element.perks());
+        List<Element> all = new LinkedList<>(Arrays.asList(perks));
         defaultFor(contest, settings).forEach(perk -> all.remove(perk.getState()));
         return random(dice, settings, all.toArray(new Element[]{}));
     }
@@ -53,10 +54,6 @@ public class PerkUtils {
         Perk perk = (Perk) ElementMapper.get(element);
         perk.init(settings);
         return Optional.ofNullable(perk);
-    }
-
-    public static boolean isPerk(Element element) {
-        return Element.perks().contains(element);
     }
 
     public static List<Perk> defaultFor(boolean contest, GameSettings settings) {

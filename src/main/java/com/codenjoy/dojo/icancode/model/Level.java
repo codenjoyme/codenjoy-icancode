@@ -25,7 +25,7 @@ package com.codenjoy.dojo.icancode.model;
 
 import com.codenjoy.dojo.client.ElementsMap;
 import com.codenjoy.dojo.games.icancode.Element;
-import com.codenjoy.dojo.icancode.model.items.perks.PerkUtils;
+import com.codenjoy.dojo.games.icancode.ElementUtils;
 import com.codenjoy.dojo.icancode.services.GameSettings;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.field.AbstractLevel;
@@ -65,7 +65,7 @@ public class Level extends AbstractLevel {
 
                 if (element.getLayer() != LAYER1
                     || element == Element.GOLD
-                    || PerkUtils.isPerk(element))
+                    || ElementUtils.isPerk(element))
                 {
                     Element atBottom = Element.FLOOR;
                     cell.add(create(atBottom, settings));
