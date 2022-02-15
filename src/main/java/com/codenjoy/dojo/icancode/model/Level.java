@@ -63,7 +63,7 @@ public class Level extends AbstractLevel {
                 Element element = elements.get(map.charAt(indexChar));
                 BaseItem item = create(element, settings);
 
-                if (element.getLayer() != LAYER1
+                if (ElementUtils.layer(element) != LAYER1
                     || element == Element.GOLD
                     || ElementUtils.isPerk(element))
                 {

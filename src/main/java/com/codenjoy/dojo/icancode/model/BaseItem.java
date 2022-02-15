@@ -24,6 +24,7 @@ package com.codenjoy.dojo.icancode.model;
 
 
 import com.codenjoy.dojo.games.icancode.Element;
+import com.codenjoy.dojo.games.icancode.ElementUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -123,6 +124,6 @@ public abstract class BaseItem implements Item {
 
     @Override
     public int layer() {
-        return element.getLayer();
+        return ElementUtils.layer(element);
     }
 }
