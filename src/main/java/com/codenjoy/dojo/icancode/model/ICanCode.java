@@ -27,7 +27,6 @@ import com.codenjoy.dojo.icancode.model.items.perks.*;
 import com.codenjoy.dojo.icancode.services.Event;
 import com.codenjoy.dojo.icancode.services.GameSettings;
 import com.codenjoy.dojo.services.*;
-import com.codenjoy.dojo.services.printer.BoardReader;
 import com.codenjoy.dojo.services.printer.layeredview.LayeredBoardReader;
 import com.codenjoy.dojo.services.printer.state.State;
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +35,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BiFunction;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.PERK_DROP_RATIO;
@@ -366,20 +364,6 @@ public class ICanCode implements Tickable, Field {
         return settings;
     }
 
-    @Override
-    public BoardReader<Player> reader() {
-        return new BoardReader<>() {
-            @Override
-            public int size() {
-                return ICanCode.this.size();
-            }
-
-            @Override
-            public void addAll(Player player, Consumer<Iterable<? extends Point>> processor) {
-                // because layeredReader() implemented here
-            }
-        };
-    }
 
     @Override
     public LayeredBoardReader layeredReader() {
