@@ -88,7 +88,7 @@ public class GameSettings extends SettingsImpl
                 Mode.TRAINING.key(),
                 Mode.ALL_SINGLE.key(),
                 Mode.ALL_IN_ROOMS.key(),
-                Mode.TRAINING_FINAL_IN_ROOMS.key()));
+                Mode.TRAINING_FINAL_IN_ROOMS.key()), 0);
 
         bool(IS_TRAINING_MODE, true);
         integer(VIEW_SIZE, 20);
