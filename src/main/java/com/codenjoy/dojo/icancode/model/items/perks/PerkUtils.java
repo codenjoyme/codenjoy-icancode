@@ -56,6 +56,15 @@ public class PerkUtils {
         return Optional.ofNullable(perk);
     }
 
+    /**
+     * Формат строки в DEFAULT_PERKS 'abcd,efgh' где 'abcd' доступные по умолчанию герою
+     * перки в singleplayer training уровне, а 'efgh' доуступные по умолчанию герою перки
+     * в multiplayer contest уровне.
+     * @param contest true если multiplayer contest уровень где все играют друг с другом,
+     *                false если singleplayer training уровень.
+     * @param settings настройки игры
+     * @return возвращает заданный в настройках набор перков.
+     */
     public static List<Perk> defaultFor(boolean contest, GameSettings settings) {
         String data = settings.string(DEFAULT_PERKS);
         if (!data.contains(",")) {
