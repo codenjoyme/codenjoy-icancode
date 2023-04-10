@@ -64,7 +64,7 @@ ul {
 }
 
 .header-container {
-  background-color: rgb(58, 66, 84);
+  background-color: rgb(37, 41, 52);
   border-bottom: 6px solid #ecc134;
 }
 
@@ -526,7 +526,7 @@ a.modalCloseImg {
 .trainings {
   white-space: nowrap;
   margin-bottom: 30px;
-  background-color: #323132;
+  background-color: rgb(48, 54, 68);
   margin-bottom: 0;
   height: 30px;
 }
@@ -703,7 +703,7 @@ a.modalCloseImg {
 
 .footer {
   height: 40px;
-  background-color: rgb(37, 41, 52);
+  background-color: rgb(28, 31, 40);
   margin-top: 10px;
   bottom: 0;
   left: 0;
@@ -890,8 +890,8 @@ canvas {
 
 .tab-content>.active {
   display: block;
-  background-color: #323132;
-  border: 1px solid rgb(48, 54, 68);
+  background-color: rgb(37, 41, 52);
+  border: 1px solid rgb(37, 41, 52);
   box-sizing: border-box;
   padding: 15px;
   color: #fff;
@@ -900,7 +900,7 @@ canvas {
 
 .method {
   margin-bottom: 20px;
-  color: rgb(58, 66, 84);
+  color: #fff;
 }
 
 .method span.white {
