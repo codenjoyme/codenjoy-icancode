@@ -26,8 +26,8 @@ input {
 
 input:-webkit-autofill {
   -webkit-box-shadow: inset 0 0 0 50px #323132 !important; 
-  -webkit-text-fill-color: #999 !important; 
-  color: #999 !important; 
+  -webkit-text-fill-color: #999 !important;
+  color: #999 !important;
 }
 
 canvas {
@@ -35,14 +35,14 @@ canvas {
 }
 
 body {
-  background-color: #464547!important;
+  background-color: rgb(48, 54, 68)!important;
 }
 
 .wrapper {
-  min-height: 100vh; 
-  box-sizing: border-box; 
+  min-height: 100vh;
+  box-sizing: border-box;
 /*  padding-bottom: 55px; */
-  position: relative; 
+  position: relative;
   min-width: 800px;
 }
 
@@ -64,12 +64,12 @@ ul {
 }
 
 .header-container {
-  background-color: #666;
+  background-color: rgb(58, 66, 84);
   border-bottom: 6px solid #ecc134;
 }
 
 .header .container {
-  height: 50px; 
+  height: 50px;
 }
 
 .nav-item a {
@@ -77,12 +77,12 @@ ul {
 }
 
 .nav-item:hover a {
-  color: rgba(255, 255, 255, .5);
+  color: rgba(58, 66, 84, .5);
   text-decoration: none;
 }
 
 .inline {
-  display: inline-block; 
+  display: inline-block;
 }
 
 .logo {
@@ -109,7 +109,7 @@ ul {
   font-weight: 300;
 }
 
-.icancode-title { text-transform: none; }
+.kata-title { text-transform: none; }
 
 .nav-item {
   font-family: sans-serif;
@@ -146,8 +146,8 @@ ul {
   position: relative;
   width: 100%;
   height: 550px;
-  background-color: #323132;
-  border: 1px solid #5c5b5d;
+  background-color: rgb(37, 41, 52);
+  border: 1px solid rgb(48, 54, 68);
   padding-left: 0px;
 }
 
@@ -164,7 +164,7 @@ ul {
   padding-bottom: 10px;
   color: #fff;
   font-size: 40px;
-  border-bottom: 1px solid #5c5b5d;
+  border-bottom: 1px solid rgb(48, 54, 68);
 }
 
 .board-title+div table tr td:first-child {
@@ -184,7 +184,7 @@ ul {
   padding: 10px 0;
   line-height: 52px;
   color: #fff;
-  text-shadow: 2px 2px #464547;
+  text-shadow: 2px 2px rgb(48, 54, 68);
 }
 
 #leaderboard {
@@ -202,7 +202,7 @@ a:visited {
 }
 
 .board a {
-  text-shadow: 2px 2px #464547;
+  text-shadow: 2px 2px rgb(48, 54, 68);
 }
 
 .star {
@@ -232,7 +232,7 @@ textarea:focus {
   height: 480px;
   top: 5px;
   box-sizing: border-box;
-  background-color: #323132;
+  background-color: rgb(37, 41, 52);
   border: none;
   font-size: 14px !important;
 }
@@ -245,7 +245,7 @@ textarea:focus {
   left: 0;
   box-sizing: border-box;
   padding-left: 20px;
-  border-top: 1px solid #5c5b5d;
+  border-top: 1px solid rgb(72 81 100);
 }
 
 button:focus {
@@ -269,7 +269,7 @@ button:focus {
   transition: background .5s;
 }
 
-.commit, 
+.commit,
 .help {
   float: right;
 }
@@ -288,7 +288,7 @@ button:focus {
   float: right;
 }
 
-.previous { 
+.previous {
   float: left;
   margin-left: 0;
 }
@@ -335,7 +335,7 @@ button:focus {
 
 .tab-bottom-panel {
   overflow: hidden;
-  background: #666;
+  background: rgb(58, 66, 84);
 }
 
 .save {
@@ -406,9 +406,9 @@ a.modalCloseImg {
   top: 0;
   height: 550px;
   box-sizing: border-box;
-  background-color: #323132;
+  background-color: rgb(37, 41, 52);
   color: #fff;
-  border: 1px solid #5c5b5d;
+  border: 1px solid rgb(48, 54, 68);
   font: 12px/20px "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
   z-index: 7;
 }
@@ -425,36 +425,36 @@ a.modalCloseImg {
 }
 
 ::-webkit-scrollbar-track {
-    background: #323132;
+    background: rgb(23 26 34);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #626262;
+    background: rgb(72 81 100);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #999;
+    background: rgb(115 126 149);
 }
 
-.open-panel { 
+.open-panel {
   transition: background .5s;
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   width: 20px;
-  background-color: #626262;
+  background-color: rgb(72 81 100);
   z-index: 4;
   text-align: center;
 }
 
 .open-panel:hover {
   cursor: pointer;
-  background-color: #999;
+  background-color: rgb(115 126 149);
 }
 
 .panel-icon {
-  color: #323132;
+  color: #191824;
   line-height: 548px;
   font-size: 30px;
   text-shadow: none;
@@ -478,7 +478,7 @@ a.modalCloseImg {
 .train .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight,
 .train .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft {
   transition: background .5s;
-  background-color: #626262;
+  background-color: rgb(72 81 100);
   display: block;
   opacity: 1;
   height: 30px;
@@ -488,7 +488,7 @@ a.modalCloseImg {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   text-align: center;
-  color: #323132;
+  color: #191824;
 }
 
 .train .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft {
@@ -510,7 +510,7 @@ a.modalCloseImg {
 
 .train .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight:hover,
 .train .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft:hover {
-  background-color: #828181;
+  background-color: rgb(115 126 149);
   text-decoration: none;
 }
 
@@ -587,8 +587,8 @@ a.modalCloseImg {
   line-height: 30px;
   color: #fff;
   text-align: center;
-  border-left: 3px solid #464547;
-  border-right: 3px solid #464547;
+  border-left: 3px solid #252934;
+  border-right: 3px solid #252934;
   background-color: #323132;
   font-family: sans-serif;
   font-weight: 300;
@@ -614,7 +614,7 @@ a.modalCloseImg {
   height: 0;
   border-style: solid;
   border-width: 15px 0 15px 15px;
-  border-color: transparent transparent transparent #464547;
+  border-color: transparent transparent transparent rgb(48, 54, 68);
   z-index: 3;
   transition: all .5s;
 }
@@ -629,7 +629,7 @@ a.modalCloseImg {
   height: 0;
   border-style: solid;
   border-width: 15px 0 15px 15px;
-  border-color: transparent transparent transparent #464547;
+  border-color: transparent transparent transparent rgb(48, 54, 68);
   z-index: 2;
 }
 
@@ -686,24 +686,24 @@ a.modalCloseImg {
 }
 
 .level-not-active {
-  background-color: #999;
+  background-color: #252934;
 }
 
 .level-not-active:hover {
-  background-color: #999;
+  background-color: #252934;
 }
 
 .level-not-active:hover::after {
-  border-left-color: #999;
+  border-left-color: #252934;
 }
 
 .level-not-active::after {
-  border-left-color: #999;
+  border-left-color: #252934;
 }
 
 .footer {
   height: 40px;
-  background-color: #323132;
+  background-color: rgb(37, 41, 52);
   margin-top: 10px;
   bottom: 0;
   left: 0;
@@ -725,7 +725,7 @@ a.modalCloseImg {
 .footer-item {
   margin-right: 15px;
   padding-right: 15px;
-  border-right: 1px solid #5c5b5d;
+  border-right: 1px solid rgb(48, 54, 68);
 }
 
 .footer-item:last-child {
@@ -754,6 +754,11 @@ canvas {
   width: 0;
 }
 
+.ace-monokai .ace_gutter {
+  background: rgb(23 26 34);
+  color: rgb(130 140 161);
+}
+
 .col-sm-2 {
   width: 13% !important;
 }
@@ -763,7 +768,7 @@ canvas {
   vertical-align: middle;
   text-align: left;
   width: 588px;
-  background-color: #464547;
+  background-color: rgb(48, 54, 68);
   color: #fff;
   box-sizing: border-box;
   z-index: 1000;
@@ -790,15 +795,15 @@ canvas {
 
 .modal-footer {
   position: relative;
-  border: 1px solid #5c5b5d;
-  border-top: 1px solid #5c5b5d;
+  border: 1px solid rgb(48, 54, 68);
+  border-top: 1px solid rgb(48, 54, 68);
   padding: 0 25px;
   height: 60px;
   line-height: 60px;
   font-family: sans-serif;
   font-size: 18px;
   text-transform: uppercase;
-  background-color: #464547;
+  background-color: rgb(48, 54, 68);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -808,7 +813,7 @@ canvas {
   font-family: sans-serif;
   text-align: justify;
   padding: 25px 25px 40px 25px;
-  border: 1px solid #5c5b5d;
+  border: 1px solid rgb(48, 54, 68);
   margin: 0;
   line-height: 20px;
   font-size: 14px;
@@ -875,7 +880,7 @@ canvas {
   font-family: sans-serif;
   text-transform: uppercase;
   border-bottom: 1px solid #ecc134;
-  background-color: #666;
+  background-color: rgb(58, 66, 84);
   font-weight: 100;
 }
 
@@ -886,7 +891,7 @@ canvas {
 .tab-content>.active {
   display: block;
   background-color: #323132;
-  border: 1px solid #5c5b5d;
+  border: 1px solid rgb(48, 54, 68);
   box-sizing: border-box;
   padding: 15px;
   color: #fff;
@@ -895,7 +900,7 @@ canvas {
 
 .method {
   margin-bottom: 20px;
-  color: #666;
+  color: rgb(58, 66, 84);
 }
 
 .method span.white {
@@ -1048,7 +1053,7 @@ canvas {
     text-align: left;
     width: 90%;
     margin: auto;
-    background-color: #464547;
+    background-color: rgb(48, 54, 68);
     color: #fff;
     box-sizing: border-box;
     z-index: 1000;
