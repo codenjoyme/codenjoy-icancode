@@ -22,6 +22,8 @@
 
 function initAdmin(contextPath) {
     var libs = 'js';
+    setup = {};
+    setup.csrfAjaxHeader = {};
 
     // ----------------------- init ace editors -------------------
 
@@ -115,6 +117,6 @@ function initAdmin(contextPath) {
     // --------------------- starting -------------------------
     levelInfo.load(function() {
         progressBar.countLevels(levelInfo.getCount());
-        progressBar.loadLevel(0);
+        progressBar.loadLevel(1);
     });
 };

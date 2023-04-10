@@ -26,7 +26,7 @@
 // эта константа тут, чтобы связать все места в коде (java + js),
 // где считаем с 1 коммит, отвечающий за это так же
 // можно посмортреть в git e26ec4f6
-var levelsStartsFrom1 = 1
+var levelsStartsFrom1 = 1;
 
 function initLevelProgress(setup, onChangeLevel) {
 
