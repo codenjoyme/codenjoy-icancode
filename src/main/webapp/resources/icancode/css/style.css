@@ -31,7 +31,7 @@ input:-webkit-autofill {
 }
 
 canvas {
-  width:550px;
+  max-width:550px;
 }
 
 body {
@@ -384,8 +384,9 @@ a.modalCloseImg {
   font-family: sans-serif;
   font-size: 25px;
   text-align: center;
-  padding: 80px 0;
+  padding: 80px 10px;
   box-sizing: border-box;
+  line-height: 1.2;
 }
 
 .console.close {
