@@ -66,6 +66,16 @@ function initRunnerJs(setup, libs, getLevelInfo, storage) {
         }
     });
 
+    window.addEventListener('message', function(event) {
+        if (event.data.type !== 'update-editor') {
+            return;
+        }
+
+        if (event.data.code) {
+            editor.setValue(event.data.code, 1);
+        }
+    });
+
     $('body').bind("tick", function() {
         if (!setup.code) {
             return;
