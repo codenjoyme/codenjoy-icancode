@@ -90,9 +90,17 @@ function initProgressbar(container) {
     });
 
     $(".trainings").mCustomScrollbar({
-        scrollButtons:{ enable: true },
-        theme:"dark-2",
-        axis: "x"
+        scrollButtons : {
+            enable: true
+        },
+        theme : "dark-2",
+        axis : "x",
+        mouseWheel : {
+            enable : true,
+            preventDefault : true,
+            scrollAmount : 400
+        },
+        snapAmount : 10
     });
 
     var initScrolling = function() {
