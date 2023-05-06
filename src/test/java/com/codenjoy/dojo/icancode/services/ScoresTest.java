@@ -29,7 +29,7 @@ import com.codenjoy.dojo.services.event.ScoresMap;
 import com.codenjoy.dojo.utils.scorestest.AbstractScoresTest;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.ENABLE_KILL_SCORE;
+import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.*;
 
 public class ScoresTest  extends AbstractScoresTest {
 
@@ -73,11 +73,27 @@ public class ScoresTest  extends AbstractScoresTest {
     }
 
     @Test
-    public void shouldCollectGoldScores() {
+    public void shouldCollectGoldScores_whenWin() {
+        // given
+        settings.integer(WIN_SCORE, 25)
+                .integer(GOLD_SCORE, 10);
+
+        // when then
         assertEvents("100:\n" +
                 "WIN,0,false > +25 = 125\n" +
                 "WIN,1,false > +35 = 160\n" +
                 "WIN,2,false > +45 = 205");
+    }
+
+    @Test
+    public void shouldCollectScores_whenLose() {
+        // given
+        settings.integer(LOSE_PENALTY, -5);
+
+        // when then
+        assertEvents("100:\n" +
+                "LOSE,false > -5 = 95\n" +
+                "LOSE,false > -5 = 90");
     }
 
     @Test
@@ -97,7 +113,8 @@ public class ScoresTest  extends AbstractScoresTest {
     @Test
     public void shouldNotCountZombieKill_whenSingle() {
         // given
-        settings.bool(ENABLE_KILL_SCORE, true);
+        settings.bool(ENABLE_KILL_SCORE, true)
+                .integer(KILL_ZOMBIE_SCORE, 5);
 
         // when then
         assertEvents("100:\n" +
@@ -108,7 +125,9 @@ public class ScoresTest  extends AbstractScoresTest {
     @Test
     public void shouldNotCountKills_whenDisabledKillsScore() {
         // given
-        settings.bool(ENABLE_KILL_SCORE, false);
+        settings.bool(ENABLE_KILL_SCORE, false)
+                .integer(KILL_ZOMBIE_SCORE, 5)
+                .integer(KILL_HERO_SCORE, 10);
 
         // when then
         assertEvents("100:\n" +
@@ -119,7 +138,9 @@ public class ScoresTest  extends AbstractScoresTest {
     @Test
     public void shouldCountKills_whenEnabledKillsScore() {
         // given
-        settings.bool(ENABLE_KILL_SCORE, true);
+        settings.bool(ENABLE_KILL_SCORE, true)
+                .integer(KILL_ZOMBIE_SCORE, 5)
+                .integer(KILL_HERO_SCORE, 10);
 
         assertEvents("100:\n" +
                 "KILL_ZOMBIE,2,true > +10 = 110\n" +
