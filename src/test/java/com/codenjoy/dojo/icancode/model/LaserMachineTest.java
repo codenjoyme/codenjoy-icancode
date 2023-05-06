@@ -459,7 +459,7 @@ public class LaserMachineTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[LOSE(gold=0, kill=0, single)]");
+        verifyAllEvents("[LOSE(single)]");
 
         assertL("╔═════┐" +
                 "║˃....│" +
@@ -1186,7 +1186,7 @@ public class LaserMachineTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[LOSE(gold=0, kill=0, single)]");
+        verifyAllEvents("[LOSE(single)]");
 
         assertL("╔═════┐" +
                 "║˃....│" +
@@ -1292,7 +1292,7 @@ public class LaserMachineTest extends AbstractGameTest {
         hero.jump();
 
         // then
-        verifyAllEvents("[LOSE(gold=0, kill=0, single)]");
+        verifyAllEvents("[LOSE(single)]");
 
         assertL("╔═════┐" +
                 "║˃....│" +

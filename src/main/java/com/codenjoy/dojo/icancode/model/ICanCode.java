@@ -37,6 +37,7 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 
+import static com.codenjoy.dojo.icancode.services.Event.Type.*;
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.PERK_DROP_RATIO;
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.VIEW_SIZE;
 import static java.util.stream.Collectors.toList;
@@ -112,17 +113,17 @@ public class ICanCode implements Tickable, Field {
         for (Player player : players) {
             Hero hero = player.getHero();
             if (hero.getKillZombieCount() > 0) {
-                player.event(Event.KILL_ZOMBIE(hero.getKillZombieCount(), contest));
+                player.event(new Event(KILL_ZOMBIE, hero.getKillZombieCount(), contest));
                 hero.resetZombieKillCount();
             }
             if (hero.getKillHeroCount() > 0) {
-                player.event(Event.KILL_HERO(hero.getKillHeroCount(), contest));
+                player.event(new Event(KILL_HERO, hero.getKillHeroCount(), contest));
                 hero.resetHeroKillCount();
             }
             if (!hero.isAlive()) {
-                player.event(Event.LOSE(contest));
+                player.event(new Event(LOSE, contest));
             } else if (hero.isWin()) {
-                player.event(Event.WIN(hero.getGoldCount(), contest));
+                player.event(new Event(WIN, hero.getGoldCount(), contest));
                 hero.die();
             }
         }

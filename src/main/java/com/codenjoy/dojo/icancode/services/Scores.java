@@ -34,19 +34,19 @@ public class Scores extends ScoresMap<Event> {
 
         put(Event.Type.WIN,
                 event -> (event.isMultiple() ? 0 : settings.integer(WIN_SCORE))
-                        + event.getGoldCount() * settings.integer(GOLD_SCORE));
+                        + event.goldCount() * settings.integer(GOLD_SCORE));
 
         put(Event.Type.LOSE,
                 event -> settings.integer(LOSE_PENALTY));
 
         put(Event.Type.KILL_ZOMBIE,
                 event -> event.isMultiple() && settings.bool(ENABLE_KILL_SCORE)
-                        ? event.getKillCount() * settings.integer(KILL_ZOMBIE_SCORE)
+                        ? event.killCount() * settings.integer(KILL_ZOMBIE_SCORE)
                         : 0);
 
         put(Event.Type.KILL_HERO,
                 event -> event.isMultiple() && settings.bool(ENABLE_KILL_SCORE)
-                        ? event.getKillCount() * settings.integer(KILL_HERO_SCORE)
+                        ? event.killCount() * settings.integer(KILL_HERO_SCORE)
                         : 0);
     }
 }

@@ -1404,7 +1404,7 @@ public class PullPushBoxTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[LOSE(gold=0, kill=0, single)]");
+        verifyAllEvents("[LOSE(single)]");
 
         assertL("╔════┐" +
                 "║S.O.│" +

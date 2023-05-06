@@ -364,7 +364,7 @@ public class GameTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[WIN(gold=0, kill=0, single)]");
+        verifyAllEvents("[WIN(gold=0, single)]");
 
         assertE("-----" +
                 "-----" +
@@ -396,7 +396,7 @@ public class GameTest extends AbstractGameTest {
         assertEquals(true, player.isWin());
         assertEquals(false, player.isAlive());
 
-        verifyAllEvents("[WIN(gold=0, kill=0, single)]");
+        verifyAllEvents("[WIN(gold=0, single)]");
 
         // when
         game.newGame(player);
@@ -476,7 +476,7 @@ public class GameTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[WIN(gold=0, kill=0, single)]");
+        verifyAllEvents("[WIN(gold=0, single)]");
 
         assertL("     " +
                 "╔═══┐" +
@@ -503,7 +503,7 @@ public class GameTest extends AbstractGameTest {
         hero.right();
         game.tick();
 
-        verifyAllEvents("[WIN(gold=0, kill=0, single)]");
+        verifyAllEvents("[WIN(gold=0, single)]");
 
         assertEquals(true, player.isWin());
         assertEquals(false, player.isAlive());
@@ -583,7 +583,7 @@ public class GameTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[LOSE(gold=0, kill=0, single)]");
+        verifyAllEvents("[LOSE(single)]");
 
         assertL("╔══┐" +
                 "║SO│" +
@@ -691,7 +691,7 @@ public class GameTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[WIN(gold=1, kill=0, single)]");
+        verifyAllEvents("[WIN(gold=1, single)]");
 
         assertL("     " +
                 "╔═══┐" +
@@ -727,7 +727,7 @@ public class GameTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[WIN(gold=2, kill=0, single)]");
+        verifyAllEvents("[WIN(gold=2, single)]");
 
         assertL("      " +
                 "╔════┐" +
@@ -1832,7 +1832,7 @@ public class GameTest extends AbstractGameTest {
                 "-----" +
                 "-----");
 
-        verifyAllEvents("[WIN(gold=0, kill=0, single)]");
+        verifyAllEvents("[WIN(gold=0, single)]");
     }
 
     @Test
@@ -1856,7 +1856,7 @@ public class GameTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[KILL_ZOMBIE(gold=0, kill=1, single)]");
+        verifyAllEvents("[KILL_ZOMBIE(kill=1, single)]");
 
         assertE("------" +
                 "--☺---" +
@@ -1908,7 +1908,7 @@ public class GameTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[LOSE(gold=0, kill=0, single)]");
+        verifyAllEvents("[LOSE(single)]");
 
         assertL("╔══┐" +
                 "║SO│" +
@@ -2011,7 +2011,7 @@ public class GameTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[LOSE(gold=0, kill=0, single)]");
+        verifyAllEvents("[LOSE(single)]");
 
         assertL("╔══┐" +
                 "║S.│" +

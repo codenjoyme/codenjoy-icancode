@@ -23,31 +23,9 @@ package com.codenjoy.dojo.icancode.services;
  */
 
 
-import com.codenjoy.dojo.services.event.EventObject;
+import com.codenjoy.dojo.services.event.DoubleValueEvent;
 
-public class Event implements EventObject<Event.Type, Event> {
-
-    private Type type;
-
-    private int goldCount;
-    private boolean multiple;
-    private int killCount;
-
-    public static Event WIN(int goldCount, boolean multiple) {
-        return new Event(goldCount, multiple);
-    }
-
-    public static Event KILL_ZOMBIE(int killCount, boolean multiple) {
-        return new Event(Type.KILL_ZOMBIE, killCount, multiple);
-    }
-
-    public static Event KILL_HERO(int killCount, boolean multiple) {
-        return new Event(Type.KILL_HERO, killCount, multiple);
-    }
-
-    public static Event LOSE(boolean multiple) {
-        return new Event(multiple);
-    }
+public class Event extends DoubleValueEvent<Event.Type, Integer, Boolean> {
 
     public enum Type {
         WIN,
@@ -56,80 +34,42 @@ public class Event implements EventObject<Event.Type, Event> {
         KILL_HERO;
     }
 
-    public Event(Type type, int killCount, boolean multiple) {
-        this.multiple = multiple;
-        this.type = type;
-        this.killCount = killCount;
+    public Event(Type type, int count, boolean multiple) {
+        super(type, count, multiple);
     }
 
-    public Event(int goldCount, boolean multiple) {
-        this.multiple = multiple;
-        type = Type.WIN;
-        this.goldCount = goldCount;
-    }
-
-    public Event(boolean multiple) {
-        this.multiple = multiple;
-        type = Type.LOSE;
+    public Event(Type type, boolean multiple) {
+        super(type, 0, multiple);
     }
 
     public boolean isMultiple() {
-        return multiple;
+        return value2();
     }
 
-    public int getGoldCount() {
-        return goldCount;
+    public int goldCount() {
+        return value();
     }
 
-    public int getKillCount() {
-        return killCount;
-    }
-
-    @Override
-    public Type type() {
-        return type;
-    }
-
-    @Override
-    public Event value() {
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Event events = (Event) o;
-
-        if (goldCount != events.goldCount) {
-            return false;
-        }
-
-        return type == events.type;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = 0;
-        if (type != null) {
-            result = type.hashCode();
-        }
-
-        result = 31 * result + goldCount;
-        return result;
+    public int killCount() {
+        return value();
     }
 
     @Override
     public String toString() {
-        return type +
-                "(gold=" + goldCount +
-                ", kill=" + killCount +
-                ", " + ((multiple)?"multiple":"single") +
-                ")";
+        String multiplayer = isMultiple() ? "multiple" : "single";
+
+        String count;
+        if (type() == Type.LOSE) {
+            count = "";
+        } else {
+            if (type() == Type.WIN) {
+                count = "gold=" + goldCount();
+            } else {
+                count = "kill=" + killCount();
+            }
+            count += ", ";
+        }
+
+        return String.format("%s(%s%s)", type(), count, multiplayer);
     }
 }

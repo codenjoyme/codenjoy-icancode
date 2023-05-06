@@ -188,7 +188,7 @@ public class DeathRayPerkTest extends AbstractGameTest {
         game.tick();
 
         // then
-        verifyAllEvents("[KILL_ZOMBIE(gold=0, kill=1, single)]");
+        verifyAllEvents("[KILL_ZOMBIE(kill=1, single)]");
 
         assertE("------------" +
                 "------------" +
