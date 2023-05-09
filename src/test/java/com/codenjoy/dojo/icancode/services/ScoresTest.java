@@ -97,7 +97,7 @@ public class ScoresTest  extends AbstractScoresTest {
     }
 
     @Test
-    public void shouldStillZeroAfterDead() {
+    public void shouldNotBeLessThanZero() {
         assertEvents("0:\n" +
                 "LOSE,false > +0 = 0");
     }
