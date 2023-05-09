@@ -103,7 +103,7 @@ public class ScoresTest  extends AbstractScoresTest {
     }
 
     @Test
-    public void shouldClearScore() {
+    public void shouldCleanScore() {
         assertEvents("100:\n" +
                 "WIN,false > +25 = 125\n" +
                 "(CLEAN) > -125 = 0\n" +
