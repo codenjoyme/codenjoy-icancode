@@ -27,6 +27,7 @@ import com.codenjoy.dojo.icancode.model.items.perks.*;
 import com.codenjoy.dojo.icancode.services.Event;
 import com.codenjoy.dojo.icancode.services.GameSettings;
 import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.multiplayer.TriFunction;
 import com.codenjoy.dojo.services.printer.layeredview.LayeredBoardReader;
 import com.codenjoy.dojo.services.printer.state.State;
 import org.jetbrains.annotations.NotNull;
@@ -34,7 +35,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiFunction;
 import java.util.function.Predicate;
 
 import static com.codenjoy.dojo.icancode.services.Event.Type.*;
@@ -380,9 +380,8 @@ public class ICanCode implements Tickable, Field {
             }
 
             @Override
-            public BiFunction<Integer, Integer, State> elements() {
-                Cell[] cells = ICanCode.this.level.cells();
-                return (index, layer) -> cells[index].item(layer);
+            public TriFunction<Integer, Integer, Integer, State> elements() {
+                return (x, y, layer) -> ICanCode.this.level.cell(x, y).item(layer);
             }
 
             @Override
