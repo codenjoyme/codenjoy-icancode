@@ -28,26 +28,14 @@ import com.codenjoy.dojo.icancode.services.Levels;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.hero.HeroData;
-import com.codenjoy.dojo.services.multiplayer.GamePlayer;
-import com.codenjoy.dojo.services.printer.Printer;
-import com.codenjoy.dojo.services.printer.layeredview.LayeredViewPrinter;
-import com.codenjoy.dojo.services.printer.layeredview.PrinterData;
+import com.codenjoy.dojo.services.printer.layeredview.LayeredGamePlayer;
 import org.json.JSONObject;
 
-public class Player extends GamePlayer<Hero, Field> {
-
-    private Printer<PrinterData> printer;
+public class Player extends LayeredGamePlayer<Hero, Field> {
 
     public Player(EventListener listener, GameSettings settings) {
         super(listener, settings);
-        setupPrinter();
-    }
-
-    private void setupPrinter() {
-        printer = new LayeredViewPrinter<>(
-                () -> field.layeredReader(),
-                () -> this,
-                Levels.COUNT_LAYERS);
+        setupPrinter(Levels.COUNT_LAYERS, () -> field);
     }
 
     @Override
@@ -80,10 +68,6 @@ public class Player extends GamePlayer<Hero, Field> {
     // TODO test me
     public Point getHeroOffset(Point offset) {
         return getHero().getPosition().relative(offset);
-    }
-
-    public Printer<PrinterData> getPrinter() {
-        return printer;
     }
 
     public class ICanCodeHeroData implements HeroData {

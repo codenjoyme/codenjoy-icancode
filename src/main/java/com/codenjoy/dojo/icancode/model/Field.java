@@ -30,7 +30,6 @@ import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.multiplayer.GameField;
-import com.codenjoy.dojo.services.printer.layeredview.LayeredBoardReader;
 
 import java.util.List;
 import java.util.Optional;
@@ -60,8 +59,6 @@ public interface Field extends GameField<Player, Hero> {
     void reset();
 
     boolean isContest();
-
-    LayeredBoardReader<Player> layeredReader();
 
     Dice dice();
 

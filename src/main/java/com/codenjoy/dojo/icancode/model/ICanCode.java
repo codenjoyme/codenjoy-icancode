@@ -28,7 +28,7 @@ import com.codenjoy.dojo.icancode.services.Event;
 import com.codenjoy.dojo.icancode.services.GameSettings;
 import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.multiplayer.TriFunction;
-import com.codenjoy.dojo.services.printer.layeredview.LayeredBoardReader;
+import com.codenjoy.dojo.services.printer.layeredview.LayeredField;
 import com.codenjoy.dojo.services.printer.state.State;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,7 +42,7 @@ import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.PERK_DROP_RA
 import static com.codenjoy.dojo.icancode.services.GameSettings.Keys.VIEW_SIZE;
 import static java.util.stream.Collectors.toList;
 
-public class ICanCode implements Tickable, Field {
+public class ICanCode extends LayeredField<Player, Hero> implements Tickable, Field {
 
     public static final boolean TRAINING = false;
     public static final boolean CONTEST = true;
@@ -359,35 +359,24 @@ public class ICanCode implements Tickable, Field {
         return settings;
     }
 
+    @Override
+    public int viewSize() {
+        return settings.integer(VIEW_SIZE);
+    }
 
     @Override
-    public LayeredBoardReader<Player> layeredReader() {
-        return new LayeredBoardReader<>() {
-            @Override
-            public int size() {
-                return ICanCode.this.size();
-            }
+    public TriFunction<Integer, Integer, Integer, State> elements() {
+        return (x, y, layer) -> ICanCode.this.level.cell(x, y).item(layer);
+    }
 
-            @Override
-            public int viewSize() {
-                return settings.integer(VIEW_SIZE);
-            }
+    @Override
+    public Point viewCenter(Player player) {
+        return player.getHero().getPosition();
+    }
 
-            @Override
-            public TriFunction<Integer, Integer, Integer, State> elements() {
-                return (x, y, layer) -> ICanCode.this.level.cell(x, y).item(layer);
-            }
-
-            @Override
-            public Point viewCenter(Player player) {
-                return player.getHero().getPosition();
-            }
-
-            @Override
-            public Object[] itemsInSameCell(State item, int layer) {
-                return ((Item) item).getItemsInSameCell(layer).toArray();
-            }
-        };
+    @Override
+    public Object[] itemsInSameCell(State item, int layer) {
+        return ((Item) item).getItemsInSameCell(layer).toArray();
     }
 
     @Override
