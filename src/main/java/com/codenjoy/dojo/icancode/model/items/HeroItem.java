@@ -56,10 +56,6 @@ public class HeroItem extends FieldItem implements Tickable {
         hero.tick();
     }
 
-    public void fixLayer() {
-        hero.fixLayer();
-    }
-
     @Override
     public int layer() {
         if (hero != null && hero.isFlying()) {

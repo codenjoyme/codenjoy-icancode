@@ -44,9 +44,5 @@ public interface Cell extends Point {
 
     void remove(Item item);
 
-    void jump(Item item);
-
-    void landOn(Item item);
-
     boolean only(int layer, Predicate<Item> predicate);
 }

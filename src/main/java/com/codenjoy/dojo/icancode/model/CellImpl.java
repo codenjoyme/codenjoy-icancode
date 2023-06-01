@@ -25,21 +25,17 @@ package com.codenjoy.dojo.icancode.model;
 
 import com.codenjoy.dojo.icancode.model.items.Air;
 import com.codenjoy.dojo.services.PointImpl;
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Predicate;
 
-import static com.codenjoy.dojo.client.AbstractLayeredBoard.Layers.LAYER2;
-import static com.codenjoy.dojo.client.AbstractLayeredBoard.Layers.LAYER3;
+import static java.util.stream.Collectors.toList;
 
 public class CellImpl extends PointImpl implements Cell {
 
-    private ListMultimap<Integer, Item> items = LinkedListMultimap.create();
+    private List<Item> items = new LinkedList<>();
 
     public CellImpl(int x, int y) {
         super(x, y);
@@ -49,7 +45,7 @@ public class CellImpl extends PointImpl implements Cell {
     public void add(Item item) {
         item.leaveCell();
 
-        items.put(item.layer(), item);
+        items.add(item);
         item.joinCell(this);
     }
 
@@ -67,60 +63,39 @@ public class CellImpl extends PointImpl implements Cell {
 
     @Override
     public boolean passable() {
-        return items.values().stream()
-                .allMatch(item -> item.passable());
+        return items.stream()
+                .allMatch(Item::passable);
     }
 
     @Override
     public <T extends Item> T item(int layer) {
-        Collection<Item> list = items.get(layer);
-        return (T) (list.isEmpty() ? new Air() : list.iterator().next());
+        return (T) items.stream()
+                .filter(item -> item.layer() == layer)
+                .findFirst()
+                .orElse(new Air());
     }
 
     @Override
     public <T extends Item> List<T> items() {
-        return (List<T>)new LinkedList<>(items.values());
+        return (List<T>)new LinkedList<>(items);
     }
 
     @Override
     public <T extends Item> List<T> items(int layer) {
-        return (List<T>)new LinkedList<>(items.get(layer));
+        return (List<T>) items.stream()
+                .filter(item -> item.layer() == layer)
+                .collect(toList());
     }
 
     @Override
     public void remove(Item item) {
-        items.values().remove(item);
-    }
-
-    @Override
-    public void jump(Item item) {
-        int index = items.get(LAYER2).indexOf(item);
-        boolean heroOn2Layer = index != -1;
-        if (!heroOn2Layer) {
-            // нас не интересуют случаи, когда герой не на втором слое
-            return;
-        }
-
-        Item removed = items.get(LAYER2).remove(index);
-        items.get(LAYER3).add(removed);
-    }
-
-    @Override
-    public void landOn(Item item) {
-        int index = items.get(LAYER3).indexOf(item);
-        boolean heroOn3Layer = index != -1;
-        if (!heroOn3Layer) {
-            // нас не интересуют случаи, когда герой не на третьем слое (не в полете)
-            return;
-        }
-
-        Item removed = items.get(LAYER3).remove(index);
-        items.get(LAYER2).add(removed);
+        items.remove(item);
     }
 
     @Override
     public boolean only(int layer, Predicate<Item> predicate) {
-        return items(layer).stream().allMatch(predicate);
+        return items(layer).stream()
+                .allMatch(predicate);
     }
 
     @Override

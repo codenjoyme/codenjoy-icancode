@@ -356,14 +356,6 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
         gun.tick();
     }
 
-    public void fixLayer() {
-        if (flying) {
-            item.cell().jump(item);
-        } else {
-            item.cell().landOn(item);
-        }
-    }
-
     private boolean tryPullBox(Point hero) {
         Point from = direction.inverted().change(hero);
 
