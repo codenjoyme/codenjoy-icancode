@@ -68,7 +68,7 @@ public class Zombie extends FieldItem implements Tickable {
                 .ifPresent(heroItem -> {
                     Hero hero = heroItem.getHero();
                     if (!hero.isFlying()) {
-                        removeFromCell();
+                        leaveCell();
                         hero.dieOnZombie();
                     }
                 });
@@ -77,8 +77,8 @@ public class Zombie extends FieldItem implements Tickable {
     @Override
     public void tick() {
         if (die) {
-            Cell cell = getCell();
-            removeFromCell();
+            Cell cell = cell();
+            leaveCell();
             field.dropNextPerk().ifPresent(cell::add);
             return;
         }
@@ -87,11 +87,11 @@ public class Zombie extends FieldItem implements Tickable {
             return;
         }
 
-        Direction direction = brain().whereToGo(getCell(), field);
+        Direction direction = brain().whereToGo(cell(), field);
         if (direction == null) {
             return;
         }
-        Point to = direction.change(getCell());
+        Point to = direction.change(cell());
 
         if (!field.isBarrier(to) && !field.isAt(to, Zombie.class)) {
             field.move(this, to);

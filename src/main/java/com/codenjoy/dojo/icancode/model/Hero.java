@@ -69,7 +69,7 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
     }
 
     public void removeFromCell() {
-        item.removeFromCell();
+        item.leaveCell();
     }
 
     public FieldItem getItem() {
@@ -293,10 +293,10 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
 
         if (fire && direction != null) {
             if (has(UnlimitedFirePerk.class)) {
-                field.fire(direction, item.getCell(), item);
+                field.fire(direction, item.cell(), item);
                 gun.unlimitedShoot();
             } else if (gun.canShoot()) {
-                field.fire(direction, item.getCell(), item);
+                field.fire(direction, item.cell(), item);
                 gun.shoot();
             }
             fire = false;
@@ -309,7 +309,7 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
                 .collect(toList());
 
         if (direction != null) {
-            Cell from = item.getCell();
+            Cell from = item.cell();
             Point to = direction.change(from);
 
             if (flying && (field.isAt(to, Box.class)
@@ -328,7 +328,7 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
 
                 if (field.isBarrier(to)) {
                     if (landOn) { // TODO test landOn
-                        item.getCell().comeIn(item);
+                        item.cell().comeIn(item);
                     }
                 } else {
                     if (pull) {
@@ -341,7 +341,7 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
 
                     if (!flying) {
                         field.perkAt(to).ifPresent(perk -> {
-                            perk.removeFromCell();
+                            perk.leaveCell();
                             perks.add(perk);
                         });
                     }
@@ -358,9 +358,9 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
 
     public void fixLayer() {
         if (flying) {
-            item.getCell().jump(item);
+            item.cell().jump(item);
         } else {
-            item.getCell().landOn(item);
+            item.cell().landOn(item);
         }
     }
 
@@ -415,7 +415,7 @@ public class Hero extends PlayerHero<Field> implements State<Element, Player> {
     }
 
     public Point getPosition() {
-        return item.getCell();
+        return item.cell();
     }
 
     @Override

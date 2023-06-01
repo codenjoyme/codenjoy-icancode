@@ -54,7 +54,7 @@ public class Gold extends RenewableItem {
                     Hero hero = heroItem.getHero();
                     if (!hero.isFlying()) {
                         hero.pickUp(this);
-                        removeFromCell();
+                        leaveCell();
                     }
                 });
     }

@@ -120,7 +120,7 @@ public abstract class AbstractGameTest {
                         game.newGame(player);
                         Hero hero = player.getHero();
                         heroItem.init(hero);
-                        item.removeFromCell();
+                        item.leaveCell();
                     }
                 });
 

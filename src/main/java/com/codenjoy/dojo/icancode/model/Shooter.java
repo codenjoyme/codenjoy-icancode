@@ -84,7 +84,7 @@ public class Shooter {
 
     private Cell nextAvailable(Laser laser, boolean unstoppable) {
         Direction direction = laser.getDirection();
-        Point to = direction.change(laser.getCell());
+        Point to = direction.change(laser.cell());
         while (!to.isOutOf(field.size())) {
             if (!field.isBarrier(to)) {
                 return field.getCell(to);
@@ -101,6 +101,6 @@ public class Shooter {
 
     public void fireRegularLaserByHero(Laser laser, HeroItem heroItem) {
         laser.unstoppable(heroItem.getHero().has(UnstoppableLaserPerk.class));
-        heroItem.getCell().add(laser);
+        heroItem.cell().add(laser);
     }
 }

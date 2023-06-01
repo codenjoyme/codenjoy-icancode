@@ -55,7 +55,7 @@ public abstract class BaseItem implements Item {
     }
 
     @Override
-    public Cell getCell() {
+    public Cell cell() {
         return cell;
     }
 
@@ -84,15 +84,15 @@ public abstract class BaseItem implements Item {
     }
 
     @Override
-    public void setCell(Cell value) {
-        cell = value;
+    public void joinCell(Cell cell) {
+        this.cell = cell;
     }
 
     @Override
-    public void removeFromCell() {
-        if (getCell() != null) {
-            getCell().remove(this);
-            setCell(null);
+    public void leaveCell() {
+        if (cell() != null) {
+            cell().remove(this);
+            joinCell(null);
         }
     }
 

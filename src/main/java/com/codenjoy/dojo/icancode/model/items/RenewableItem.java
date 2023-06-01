@@ -36,11 +36,11 @@ public abstract class RenewableItem extends BaseItem {
     }
 
     @Override
-    public void setCell(Cell cell) {
+    public void joinCell(Cell cell) {
         if (dock == null && cell != null) {
             dock = cell;
         }
-        super.setCell(cell);
+        super.joinCell(cell);
     }
 
     public void reset() {

@@ -47,10 +47,10 @@ public class CellImpl extends PointImpl implements Cell {
 
     @Override
     public void add(Item item) {
-        item.removeFromCell();
+        item.leaveCell();
 
         items.put(item.layer(), item);
-        item.setCell(this);
+        item.joinCell(this);
     }
 
     @Override

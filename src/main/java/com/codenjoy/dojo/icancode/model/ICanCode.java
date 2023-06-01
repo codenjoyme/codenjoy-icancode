@@ -102,7 +102,7 @@ public class ICanCode implements Tickable, Field {
 
         availablePerks().stream()
                 .filter(perk -> !perk.isAvailable())
-                .forEach(BaseItem::removeFromCell);
+                .forEach(BaseItem::leaveCell);
 
         // после всех перемещений, если герой в полете его надо
         // на 3й леер, иначе приземлить
@@ -180,12 +180,12 @@ public class ICanCode implements Tickable, Field {
     public Cell getStartPosition() {
         List<Item> items = level.items(Start.class);
         int index = dice.next(items.size());
-        return items.get(index).getCell();
+        return items.get(index).cell();
     }
 
     @Override
     public Cell getEndPosition() {
-        return level.items(Exit.class).get(0).getCell();
+        return level.items(Exit.class).get(0).cell();
     }
 
     @Override
@@ -198,7 +198,7 @@ public class ICanCode implements Tickable, Field {
     public Optional<Perk> perkAt(Point pt) {
         Cell cell = level.cell(pt);
         return availablePerks().stream()
-                .filter(perk -> perk.getCell().equals(cell))
+                .filter(perk -> perk.cell().equals(cell))
                 .findAny();
     }
 
@@ -251,7 +251,7 @@ public class ICanCode implements Tickable, Field {
 
     private void setRandomGold(List<Gold> gold) {
         List<Floor> floor = floor().stream()
-                .filter(item -> item.getCell().items().size() == 1)
+                .filter(item -> item.cell().items().size() == 1)
                 .collect(toList());
 
         if (floor.isEmpty() && !gold.isEmpty()) {
@@ -265,7 +265,7 @@ public class ICanCode implements Tickable, Field {
             Floor place = floor.get(random);
             floor.remove(random);
 
-            place.getCell().add(item);
+            place.cell().add(item);
         }
     }
 
@@ -287,7 +287,7 @@ public class ICanCode implements Tickable, Field {
 
     @Override
     public void dropPickedGold(Hero hero) {
-        Cell heroCell = hero.getItem().getCell();
+        Cell heroCell = hero.getItem().cell();
         List<Cell> cells = neighbors(heroCell);
         List<Gold> gold = hero.gold();
         while (!gold.isEmpty() && !cells.isEmpty()) {

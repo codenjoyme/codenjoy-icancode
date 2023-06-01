@@ -41,7 +41,7 @@ public class ZombiePot extends FieldItem implements Tickable {
     public void tick() {
         if (++time % field.settings().integer(TICKS_PER_NEW_ZOMBIE) == 0) {
             if (field.zombies().size() < field.settings().integer(COUNT_ZOMBIES_ON_MAP)) {
-                field.move(newZombie(), this.getCell());
+                field.move(newZombie(), this.cell());
             }
         }
     }
