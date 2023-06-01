@@ -367,8 +367,8 @@ public class ICanCode implements Tickable, Field {
 
 
     @Override
-    public LayeredBoardReader layeredReader() {
-        return new LayeredBoardReader() {
+    public LayeredBoardReader<Player> layeredReader() {
+        return new LayeredBoardReader<>() {
             @Override
             public int size() {
                 return ICanCode.this.size();
@@ -386,8 +386,8 @@ public class ICanCode implements Tickable, Field {
             }
 
             @Override
-            public Point viewCenter(Object player) {
-                return ((Player)player).getHero().getPosition();
+            public Point viewCenter(Player player) {
+                return player.getHero().getPosition();
             }
 
             @Override

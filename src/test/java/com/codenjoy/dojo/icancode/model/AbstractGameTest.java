@@ -124,7 +124,7 @@ public abstract class AbstractGameTest {
                     }
                 });
 
-        printer = new LayeredViewPrinter(
+        printer = new LayeredViewPrinter<>(
                 () -> game.layeredReader(),
                 () -> player,
                 COUNT_LAYERS);

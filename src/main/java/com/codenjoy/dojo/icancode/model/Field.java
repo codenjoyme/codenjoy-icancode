@@ -61,7 +61,7 @@ public interface Field extends GameField<Player, Hero> {
 
     boolean isContest();
 
-    LayeredBoardReader layeredReader();
+    LayeredBoardReader<Player> layeredReader();
 
     Dice dice();
 
