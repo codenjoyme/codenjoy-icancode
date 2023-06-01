@@ -26,13 +26,11 @@ package com.codenjoy.dojo.icancode.model;
 import com.codenjoy.dojo.icancode.model.items.Air;
 import com.codenjoy.dojo.services.PointImpl;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toList;
 
 public class CellImpl extends PointImpl implements Cell {
 
@@ -52,14 +50,14 @@ public class CellImpl extends PointImpl implements Cell {
 
     @Override
     public void comeIn(Item input) {
-        items().stream()
-                .filter(item -> !item.equals(input))
-                // TODO to use dice
-                .sorted((o1, o2) -> ThreadLocalRandom.current().nextInt(-1, 2))
-                .forEach(item -> {
-                    item.action(input);
-                    input.action(item);
-                });
+        List<Item> list = new LinkedList<>(items);
+        Collections.shuffle(list, ThreadLocalRandom.current()); // TODO to use dice
+        for (Item item : list) {
+            if (!item.equals(input)) {
+                item.action(input);
+                input.action(item);
+            }
+        }
     }
 
     @Override
@@ -70,9 +68,12 @@ public class CellImpl extends PointImpl implements Cell {
 
     @Override
     public <T extends Item> T item(int layer) {
-        return (T) itemsStream(layer)
-                .findFirst()
-                .orElse(new Air());
+        for (Item item : items) {
+            if (item.layer() == layer) {
+                return (T) item;
+            }
+        }
+        return (T) new Air();
     }
 
     @Override
@@ -82,13 +83,13 @@ public class CellImpl extends PointImpl implements Cell {
 
     @Override
     public <T extends Item> List<T> items(int layer) {
-        return (List<T>) itemsStream(layer)
-                .collect(toList());
-    }
-
-    private Stream<Item> itemsStream(int layer) {
-        return items.stream()
-                .filter(item -> item.layer() == layer);
+        List<T> result = new LinkedList<>();
+        for (Item item : items) {
+            if (item.layer() == layer) {
+                result.add((T) item);
+            }
+        }
+        return result;
     }
 
     @Override
@@ -98,8 +99,14 @@ public class CellImpl extends PointImpl implements Cell {
 
     @Override
     public boolean only(int layer, Predicate<Item> predicate) {
-        return itemsStream(layer)
-                .allMatch(predicate);
+        for (Item item : items) {
+            if (item.layer() == layer) {
+                if (!predicate.test(item)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
