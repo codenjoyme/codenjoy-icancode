@@ -30,6 +30,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -69,22 +70,25 @@ public class CellImpl extends PointImpl implements Cell {
 
     @Override
     public <T extends Item> T item(int layer) {
-        return (T) items.stream()
-                .filter(item -> item.layer() == layer)
+        return (T) itemsStream(layer)
                 .findFirst()
                 .orElse(new Air());
     }
 
     @Override
     public <T extends Item> List<T> items() {
-        return (List<T>)new LinkedList<>(items);
+        return (List<T>) items;
     }
 
     @Override
     public <T extends Item> List<T> items(int layer) {
-        return (List<T>) items.stream()
-                .filter(item -> item.layer() == layer)
+        return (List<T>) itemsStream(layer)
                 .collect(toList());
+    }
+
+    private Stream<Item> itemsStream(int layer) {
+        return items.stream()
+                .filter(item -> item.layer() == layer);
     }
 
     @Override
@@ -94,7 +98,7 @@ public class CellImpl extends PointImpl implements Cell {
 
     @Override
     public boolean only(int layer, Predicate<Item> predicate) {
-        return items(layer).stream()
+        return itemsStream(layer)
                 .allMatch(predicate);
     }
 
