@@ -35,7 +35,11 @@ public class Player extends LayeredGamePlayer<Hero, Field> {
 
     public Player(EventListener listener, GameSettings settings) {
         super(listener, settings);
-        setupPrinter(Levels.COUNT_LAYERS, () -> field);
+    }
+
+    @Override
+    public int layersCount() {
+        return Levels.COUNT_LAYERS;
     }
 
     @Override
