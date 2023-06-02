@@ -24,7 +24,6 @@ package com.codenjoy.dojo.icancode.model;
 
 
 import com.codenjoy.dojo.icancode.services.GameSettings;
-import com.codenjoy.dojo.icancode.services.Levels;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.hero.HeroData;
@@ -35,11 +34,6 @@ public class Player extends LayeredGamePlayer<Hero, Field> {
 
     public Player(EventListener listener, GameSettings settings) {
         super(listener, settings);
-    }
-
-    @Override
-    public int layersCount() {
-        return Levels.COUNT_LAYERS;
     }
 
     @Override

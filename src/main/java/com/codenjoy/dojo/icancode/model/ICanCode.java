@@ -26,6 +26,7 @@ import com.codenjoy.dojo.icancode.model.items.*;
 import com.codenjoy.dojo.icancode.model.items.perks.*;
 import com.codenjoy.dojo.icancode.services.Event;
 import com.codenjoy.dojo.icancode.services.GameSettings;
+import com.codenjoy.dojo.icancode.services.Levels;
 import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.multiplayer.TriFunction;
 import com.codenjoy.dojo.services.printer.layeredview.LayeredField;
@@ -357,6 +358,11 @@ public class ICanCode extends LayeredField<Player, Hero> implements Tickable, Fi
     @Override
     public GameSettings settings() {
         return settings;
+    }
+
+    @Override
+    public int countLayers() {
+        return Levels.COUNT_LAYERS;
     }
 
     @Override

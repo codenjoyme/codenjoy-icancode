@@ -126,8 +126,7 @@ public abstract class AbstractGameTest {
 
         printer = new LayeredViewPrinter<>(
                 () -> game,
-                () -> player,
-                COUNT_LAYERS);
+                () -> player);
     }
 
     protected int viewSize(String board) {
